@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DAA About Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Source+Sans+3:wght@400;600&display=swap">
+  <style>
+    :root {
+      --navy-dark: #0A1628;
+      --navy-mid:  #1B3A6B;
+      --red:       #C8102E;
+      --off-white: #F4F6F9;
+      --white:     #FFFFFF;
+      --text-main: #1a1a2e;
+      --text-muted:#4a5568;
+      --border:    #d1d9e6;
+      --font-head: 'Inter', sans-serif;
+      --font-body: 'Source Sans 3', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--off-white);
+      color: var(--text-main);
+    }
+
+    img { max-width: 100%; }
+
+    /* GOV BAR */
+    .gov-bar {
+      background: var(--navy-dark);
+      color: #a0b4cc;
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gov-bar strong { color: #fff; }
+    .gov-bar span { opacity: 0.6; }
+
+    /* HEADER */
+    .site-header {
+      background: var(--navy-dark);
+      border-bottom: 3px solid var(--red);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .site-logo { display: flex; align-items: center; gap: 16px; }
+
+    .seal {
+      width: 56px;
+      height: 56px;
+      border: 2px solid var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .agency-name { color: #fff; font-family: var(--font-head); }
+    .agency-name .short { font-size: 22px; font-weight: 900; letter-spacing: 0.06em; }
+    .agency-name .long  { font-size: 11px; letter-spacing: 0.1em; opacity: 0.7; text-transform: uppercase; margin-top: 2px; }
+
+    nav { display: flex; gap: 28px; flex-wrap: wrap; }
+    nav a {
+      color: #94b4d4;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    nav a.active { color: #fff; border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+    nav a:hover  { color: #fff; }
+
+    /* HERO */
+    .page-hero {
+      background: var(--navy-mid);
+      color: #fff;
+      padding: 48px 64px;
+      border-bottom: 1px solid rgba(200,16,46,0.3);
+    }
+
+    .breadcrumb {
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .breadcrumb span { color: var(--red); }
+
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      max-width: 680px;
+    }
+
+    .page-hero .subtitle {
+      margin-top: 14px;
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      line-height: 1.5;
+    }
+
+    /* BODY GRID */
+    .page-body {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 56px 40px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .main-col section { margin-bottom: 48px; }
+
+    .main-col h2 {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      border-left: 4px solid var(--red);
+      padding-left: 14px;
+      margin-bottom: 18px;
+    }
+
+    .main-col p { color: var(--text-muted); margin-bottom: 14px; line-height: 1.75; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 24px;
+      border-radius: 2px;
+    }
+
+    .info-card h3 {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .info-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+
+    .quick-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .quick-links li { border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .quick-links li:last-child { border-bottom: none; padding-bottom: 0; }
+    .quick-links a {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-mid);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .quick-links a::before { content: "›"; color: var(--red); font-size: 16px; }
+
+    /* STAT ROW */
+    .stat-row {
+      background: var(--navy-dark);
+      color: #fff;
+      padding: 48px 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-head);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+    }
+
+    /* MISSION CALLOUT */
+    .mission-callout {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 64px;
+      text-align: center;
+    }
+
+    .mission-callout blockquote {
+      font-family: var(--font-head);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 700;
+      color: var(--navy-dark);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    .mission-callout cite {
+      display: block;
+      margin-top: 16px;
+      font-family: var(--font-head);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-style: normal;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.45);
+      font-family: var(--font-head);
+      font-size: 12px;
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 760px) {
+      .site-header, .page-hero, .mission-callout { padding: 20px 16px; }
+      .page-body { grid-template-columns: 1fr; gap: 40px; padding: 32px 16px; }
+      .stat-row  { grid-template-columns: 1fr; padding: 32px 16px; }
+      footer     { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="gov-bar">
+  <strong>An official website of the United States government</strong>
+  <span>|</span>
+  <span>daa.gov</span>
+</div>
+
+<header class="site-header">
+  <div class="site-logo">
+    <div class="seal">DAA</div>
+    <div class="agency-name">
+      <div class="short">U.S. DAA</div>
+      <div class="long">Department of Algorithmic Affairs</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#" class="active">About</a>
+    <a href="#">Regulations</a>
+    <a href="#">Compliance</a>
+    <a href="#">Reports</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="breadcrumb">Home <span>›</span> About the DAA</div>
+  <h1>About the Department of Algorithmic Affairs</h1>
+  <p class="subtitle">The federal agency responsible for overseeing, regulating, and occasionally understanding the algorithms that now run most of modern life.</p>
+</div>
+
+<div class="page-body">
+  <div class="main-col">
+
+    <section>
+      <h2>Our Mission</h2>
+      <p>The U.S. Department of Algorithmic Affairs was established to bring order to the increasingly complex landscape of automated decision-making in American society. We exist because someone has to.</p>
+      <p>Every day, algorithms decide who gets a loan, which news you read, whether your job application moves forward, and what your phone thinks you want for dinner. The DAA ensures these systems operate transparently, fairly, and within the bounds of federal law — even when the systems themselves are not entirely sure what they are doing.</p>
+    </section>
+
+    <section>
+      <h2>History</h2>
+      <p>Congress established the Department of Algorithmic Affairs in 2021 following a series of high-profile incidents involving predictive policing software, a viral content recommendation spiral that lasted eleven days, and an AI hiring tool that rejected every candidate named "Kyle."</p>
+      <p>The department was initially housed within the Commerce Building and given a budget, a mandate, and seventeen months to figure out what "algorithmic accountability" meant in practice. We are still working on it.</p>
+      <p>Since its founding, the DAA has grown to 2,300 federal employees across nine regional offices, issued forty-one compliance guidelines, and opened formal investigations into fourteen technology companies — four of which have since complied.</p>
+    </section>
+
+    <section>
+      <h2>What We Do</h2>
+      <p>The DAA operates across three primary areas. Our Compliance Division audits algorithmic systems used by federal agencies and large private-sector entities, ensuring they meet transparency and fairness standards outlined in the Algorithmic Accountability Act.</p>
+      <p>Our Research Division studies how automated systems affect public life, publishing quarterly reports that are often cited in congressional testimony and occasionally read by the public.</p>
+      <p>Our Enforcement Division investigates complaints from citizens who believe an algorithm has treated them unfairly. Processing times currently average 14 months. We are working on this.</p>
+    </section>
+
+  </div>
+
+  <aside class="sidebar">
+    <div class="info-card">
+      <h3>Agency at a Glance</h3>
+      <p><strong>Founded:</strong> 2021</p>
+      <p><strong>Headquarters:</strong> Washington, D.C.</p>
+      <p><strong>Employees:</strong> 2,300</p>
+      <p><strong>Budget:</strong> $840M (FY2024)</p>
+      <p><strong>Regional Offices:</strong> 9</p>
+    </div>
+
+    <div class="info-card">
+      <h3>Quick Links</h3>
+      <ul class="quick-links">
+        <li><a href="#">File a Complaint</a></li>
+        <li><a href="#">Compliance Checklists</a></li>
+        <li><a href="#">Annual Reports</a></li>
+        <li><a href="#">FOIA Requests</a></li>
+        <li><a href="#">Leadership Directory</a></li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h3>Latest Notice</h3>
+      <p>New Draft Guidance: <strong>Automated Resume Screening Standards</strong> — public comment period open through November 30, 2026.</p>
+    </div>
+  </aside>
+</div>
+
+<div class="stat-row">
+  <div class="stat-item">
+    <div class="stat-num">41</div>
+    <div class="stat-label">Compliance Guidelines Issued</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">14</div>
+    <div class="stat-label">Active Investigations</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">9</div>
+    <div class="stat-label">Regional Offices</div>
+  </div>
+</div>
+
+<div class="mission-callout">
+  <blockquote>
+    "To ensure that the algorithms shaping American life are transparent, accountable, and at minimum explainable to a congressional committee."
+  </blockquote>
+  <cite>— DAA Mission Statement, 2021</cite>
+</div>
+
+<footer>
+  <span>U.S. Department of Algorithmic Affairs · daa.gov</span>
+  <span>An official U.S. Government website</span>
+</footer>
+
+</body>
+</html>
